@@ -1,0 +1,54 @@
+
+{% extends 'main.html' %}
+{% load static %}        
+        
+{% block content %}
+        
+        <style>
+            .menu-container{
+                display:grid;
+                grid-template-columns:1fr 3fr
+            }
+        </style>
+
+<div class="menu-container">
+        
+        <div>
+            {% include 'base/food_category.html' %}
+        </div>
+        
+        
+
+        <div class="row">
+            {% for meal in meals %}
+            <div class="col-lg-4">
+                <img class="thumbnail" src="{{meal.imageUrl}}">
+                <div class="box-element product">
+                    <h6><strong>{{meal.Meal}}</strong></h6>
+                    <hr>
+                    <button data-product="{{meal.id}}"data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add</button>
+                    <a class="btn btn-outline-success" href="{{meal.imageUrl}}">View</a>
+                    <h4 style="display: inline-block;float: right">${{meal.price|floatformat:2}}</h4>
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Footer Start -->
+        
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <p>Copyright &copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>
+                    <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    </body>
+    {% endblock content %}
+</div>
+</html>
